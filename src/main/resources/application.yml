@@ -1,0 +1,8 @@
+n4dev:
+    collector:
+        version: 1.0.0-dev
+spring:
+    security:
+        user:
+            name: collector
+            password: collector
