@@ -15,14 +15,26 @@ import java.util.*
  */
 @RestController
 @RequestMapping("/event")
-class EventConsumer {
+class EventConsumer(val eventRepository: EventRepository) {
 
     @PostMapping("/{app}/{eventType}")
     fun collectAppEvent(@PathVariable app: String, @PathVariable eventType: String, @RequestBody event: Any): EventResponse {
-        return EventResponse(UUID.randomUUID().toString(),
+
+        val eventEntity = eventRepository.save(EventEntity(null, app, eventType, event.toString()))
+
+        return EventResponse(eventEntity.id.toString(),
                              app,
                              eventType,
                              ZonedDateTime.now())
+    }
+
+    @GetMapping("")
+    fun getEvents() : List<EventResponse> {
+        val allEvents = eventRepository.findAll()
+
+        val list = allEvents.map { eventEntity -> EventResponse(eventEntity.id.toString(), eventEntity.applicationName, eventEntity.eventType, ZonedDateTime.now()) }
+
+        return list
     }
 
     data class EventResponse(val id: String, val application: String, val eventType: String, val createAt: ZonedDateTime)
