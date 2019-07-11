@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
  * InfoController.java
  * TODO(rguillemette) Add description.
  *
- * @author shaika-dzari
+ * @author rguillemette
  * @since 2.0.0 - Jul 10 - 2019
  *
  */
