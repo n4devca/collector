@@ -12,5 +12,7 @@ import org.springframework.stereotype.Repository
  * @since 2.0.0 - Jul 10 - 2019
  *
  */
-@Repository
-interface EventRepository : CrudRepository<EventEntity, Long>
+//@Repository
+interface EventRepository : CrudRepository<EventEntity, Long> {
+    fun findAllByApplicationName(pApplicationName : String )
+}
