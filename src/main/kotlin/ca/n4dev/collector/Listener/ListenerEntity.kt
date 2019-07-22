@@ -1,34 +1,28 @@
-package ca.n4dev.collector.event
+package ca.n4dev.collector.Listener
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
-import java.time.LocalDateTime
 
 /**
  *
- * EventEntity.java
+ * ListenerEntity.java
  * TODO(rguillemette) Add description.
  *
  * @author rguillemette
- * @since 2.0.0 - Jul 10 - 2019
+ * @since 2.0.0 - Jul 17 - 2019
  *
  */
-@Table("events")
-data class EventEntity(
-
+@Table("listener")
+data class ListenerEntity(
+        
     @Id
     val id: Long?,
-
-    @Column("app_name")
-    val applicationName: String,
 
     @Column("event_type")
     val eventType: String,
 
-    @Column("event_data")
-    val eventData: String,
+    @Column("listener_name")
+    val listenerName: String
 
-    @Column("event_time")
-    val eventTime: LocalDateTime
 )
